@@ -49,6 +49,16 @@ def hapus():
     else:
         print("Jadwal tidak ditemukan.")
 
+def cari():
+    nama = input("Masukkan nama matkul yang dicari: ")
+    hasil = session.query(Jadwal).filter(Jadwal.nama_matkul.like(f"%{nama}%")).all()
+    if hasil:
+        print("--- Hasil Pencarian ---")
+        for j in hasil:
+            print(f"{j.id}. {j.nama_matkul} - {j.hari}, jam {j.jam}")
+    else:
+        print("Jadwal tidak ditemukan.")
+
 if __name__ == "__main__":
     while True:
         print("\n[1] Tambah  [2] Tampil  [3] Ubah  [4] Hapus  [0] Keluar")
