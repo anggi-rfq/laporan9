@@ -23,9 +23,11 @@ def tambah():
     session.commit()
     print("Jadwal berhasil ditambahkan.")
 
-def tampil(): 
+def tampil():
+    print("--- Daftar Semua Jadwal ---") # Menambahkan judul
     for j in session.query(Jadwal).all():
-        print(f"{j.id}. {j.nama_matkul} - {j.hari}, jam {j.jam}")
+        # Mengubah format tampilan menjadi lebih deskriptif
+        print(f"ID: {j.id} | Matkul: {j.nama_matkul} | Hari: {j.hari} | Jam: {j.jam}")
 
 def ubah(): 
     id = int(input("ID yang diubah: "))
